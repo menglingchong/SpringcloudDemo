@@ -1,0 +1,17 @@
+server: 
+  port: 8001
+  
+eureka: 
+  client: 
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      
+  instance: 
+    instance-id: microservicecloud-client8001   #\u5FAE\u670D\u52A1\u5B9E\u4F8B\u540D\u79F0
+    prefer-ip-address: true     #\u8BBF\u95EE\u8DEF\u5F84\u53EF\u4EE5\u663E\u793AIP\u5730\u5740     
+
+info: #\u5FAE\u670D\u52A1\u5B9E\u4F8B\u4FE1\u606F
+  app.name: imooc-microservicecloud
+  company.name: www.imooc.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

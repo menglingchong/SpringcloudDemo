@@ -1,0 +1,9 @@
+server:
+  port: 80
+
+#\u6D88\u8D39\u8005\u4E5F\u9700\u8981\u6CE8\u518C\u8FDBeureka\u4E2D\uFF0C\u5BF9\u4E8Eeureka\u6765\u8BF4\u6D88\u8D39\u8005\u4E5F\u662Feureka\u7684\u5BA2\u6237\u7AEF\uFF0C\u4F46\u5B9E\u9645\u4E0A\u6D88\u8D39\u8005\u4E0D\u9700\u8981\u6CE8\u518C\u8FDB\u5165eureka\u4E2D
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
