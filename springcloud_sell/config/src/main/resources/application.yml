@@ -1,0 +1,22 @@
+server:
+  port: 8004
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: springcloud-Config8004   #\u914D\u7F6E\u670D\u52A1\u5B9E\u4F8B\u663E\u793A\u540D\u79F0
+    prefer-ip-address: true     #\u670D\u52A1\u5B9E\u4F8Bip\u5730\u5740
+      
+      
+spring:
+  application:
+    name: springcloud-configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/menglingchong/springcloudconfig-repo.git
+          username: 282733193@qq.com
+          password: github2015
+          basedir: E:/JavaPrograms/JavaWeb/springcloudDemo/SpringcloudDemo/springcloud_sell/config/basedir
