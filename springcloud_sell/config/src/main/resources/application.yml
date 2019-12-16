@@ -20,3 +20,15 @@ spring:
           username: 282733193@qq.com
           password: github2015
           basedir: E:/JavaPrograms/JavaWeb/springcloudDemo/SpringcloudDemo/springcloud_sell/config/basedir
+  rabbitmq:
+    host: 10.126.2.179
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    
+
+management:
+  endpoints:
+    web:
+      expose: "*"
