@@ -89,6 +89,11 @@
             <groupId>com.imooc</groupId>
             <artifactId>order-common</artifactId>
         </dependency>
+        <!--  springcloudBus相关  -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
         
         
     </dependencies>
