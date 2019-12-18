@@ -21,14 +21,19 @@ spring:
           password: github2015
           basedir: E:/JavaPrograms/JavaWeb/springcloudDemo/SpringcloudDemo/springcloud_sell/config/basedir
   rabbitmq:
-    host: 10.126.2.179
+#    host: 10.126.2.179
+    host: 192.168.1.7
     port: 5672
     username: guest
     password: guest
     virtual-host: /
     
-
+#将springcloudBus的接口暴露出去，否则更新refresh不起作用
 management:
   endpoints:
     web:
-      expose: "*"
+      exposure:  # expose: "*" 已过期
+        include: "*"
+  endpoint:
+    bus-refresh:
+      enabled: true
