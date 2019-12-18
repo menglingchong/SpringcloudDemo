@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/gitEnvironment")
 @RefreshScope
 public class EventController {
-    @Value("${spring.profiles}")
+    @Value("${spring.application.name}")
     private String env;
 
     @GetMapping("/print")
