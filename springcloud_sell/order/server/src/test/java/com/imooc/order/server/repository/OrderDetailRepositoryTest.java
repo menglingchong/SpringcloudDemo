@@ -1,6 +1,6 @@
 package com.imooc.order.server.repository;
 
-import com.imooc.order.server.ServerApplicationTests;
+import com.imooc.order.server.OrderServerApplicationTests;
 import com.imooc.order.server.dataobject.OrderDetail;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Component
-public class OrderDetailRepositoryTest extends ServerApplicationTests {
+public class OrderDetailRepositoryTest extends OrderServerApplicationTests {
     @Autowired
     private OrderDetailRepository orderDetailRepository;
     @Test

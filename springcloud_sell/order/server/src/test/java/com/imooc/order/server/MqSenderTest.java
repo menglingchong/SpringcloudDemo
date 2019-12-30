@@ -13,7 +13,7 @@ import java.util.Date;
  * 发送mq消息测试
  */
 @Component
-public class MqSenderTest extends ServerApplicationTests {
+public class MqSenderTest extends OrderServerApplicationTests {
     @Autowired
     private AmqpTemplate amqpTemplate;
 

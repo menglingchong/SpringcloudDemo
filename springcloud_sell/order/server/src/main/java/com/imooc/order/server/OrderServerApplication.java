@@ -13,10 +13,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.imooc.product.client")
 @ComponentScan("com.imooc")
-public class ServerApplication {
+public class OrderServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
+        SpringApplication.run(OrderServerApplication.class, args);
     }
 
 }

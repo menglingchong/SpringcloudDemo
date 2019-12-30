@@ -1,6 +1,6 @@
 package com.imooc.order.server.repository;
 
-import com.imooc.order.server.ServerApplicationTests;
+import com.imooc.order.server.OrderServerApplicationTests;
 import com.imooc.order.server.dataobject.OrderMaster;
 import com.imooc.order.server.enums.OrderStatusEnum;
 import com.imooc.order.server.enums.PayStatusEnum;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Component
-public class OrderMasterRepositoryTest extends ServerApplicationTests {
+public class OrderMasterRepositoryTest extends OrderServerApplicationTests {
     @Autowired
     private OrderMasterRepository orderMasterRepository;
     @Test
