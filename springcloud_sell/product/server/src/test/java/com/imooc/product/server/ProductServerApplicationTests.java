@@ -13,7 +13,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ServerApplicationTests {
+public class ProductServerApplicationTests {
 
 	@Test
 	public void contextLoads() {

@@ -1,6 +1,6 @@
 package com.imooc.product.server.service;
 
-import com.imooc.product.server.ServerApplicationTests;
+import com.imooc.product.server.ProductServerApplicationTests;
 import com.imooc.product.server.dataobject.ProductInfo;
 import com.imooc.product.server.dto.CartDTO;
 import org.junit.Assert;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class ProductServiceTest extends ServerApplicationTests {
+public class ProductServiceTest extends ProductServerApplicationTests {
     
     @Autowired
     private ProductService productService;
