@@ -1,5 +1,6 @@
 package com.imooc.product.server.controller;
 
+import com.imooc.product.common.DecreaseStockInput;
 import com.imooc.product.server.dataobject.ProductCategory;
 import com.imooc.product.server.dataobject.ProductInfo;
 import com.imooc.product.server.dto.CartDTO;
@@ -84,7 +85,7 @@ public class ProductController {
     }
     
     @PostMapping("/decreaseStock")
-    public void decreaseStock(@RequestBody List<CartDTO> cartDTOList) {
-        productService.decreaseStock(cartDTOList);
+    public void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
+        productService.decreaseStock(decreaseStockInputList);
     }
 }

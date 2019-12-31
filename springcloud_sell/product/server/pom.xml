@@ -84,17 +84,20 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
-		<!--RabbitMQ相关-->
+		<!-- RabbitMQ相关-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
-		<!-- springcloudstream -->
+		<!-- springcloudstream 相关-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.imooc</groupId>
+			<artifactId>product-common</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

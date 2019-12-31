@@ -24,12 +24,14 @@ public class SendMessageController {
         streamClient.output().send(MessageBuilder.withPayload(message).build());
     }
 
-    //发送OrderDTO对象
+
+    /**
+     * 发送 orderDTO对象
+     */
     @GetMapping("/sendMessage2")
     public void process2() {
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderId("123456");
         streamClient.output().send(MessageBuilder.withPayload(orderDTO).build());
     }
-
 }

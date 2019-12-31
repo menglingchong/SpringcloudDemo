@@ -20,16 +20,15 @@ public class StreamReceiver {
     //     log.info("StreamReceiver: {}",message);
     // }
 
-    //接收orderDTO对象 消息
     @StreamListener(value = StreamClient.OUTPUT)
     @SendTo(StreamClient.INPUT2)
     public String process(OrderDTO message) {
-        log.info("StreamReceiver: {}",message);
-        return "Received Message And Send To Input2";
+        log.info("StreamReceiver: {}", message);
+        return "Received Message And Send Message To Process2";        
     }
 
     @StreamListener(value = StreamClient.INPUT2)
     public void process2(String message) {
-        log.info("StreamReceiver2: {}",message);
+        log.info("StreamReceiver2: {}", message);
     }
 }
