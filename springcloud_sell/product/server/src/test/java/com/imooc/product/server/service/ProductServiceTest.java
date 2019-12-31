@@ -1,5 +1,6 @@
 package com.imooc.product.server.service;
 
+import com.imooc.product.common.DecreaseStockInput;
 import com.imooc.product.server.ProductServerApplicationTests;
 import com.imooc.product.server.dataobject.ProductInfo;
 import com.imooc.product.server.dto.CartDTO;
@@ -30,7 +31,7 @@ public class ProductServiceTest extends ProductServerApplicationTests {
 
     @Test
     public void decreaseStock() {
-        CartDTO cartDTO = new CartDTO("157875196366160022", 2);
-        productService.decreaseStock(Arrays.asList(cartDTO));
+        DecreaseStockInput decreaseStockInput = new DecreaseStockInput("157875196366160022", 2);
+        productService.decreaseStock(Arrays.asList(decreaseStockInput));
     }
 }
