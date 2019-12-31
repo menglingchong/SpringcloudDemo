@@ -5,10 +5,18 @@ spring:
       profile: dev   #本次访问的配置项
       label: master
       uri: http://localhost:8004  #本微服务启动后先去找8004号服务 即统一配置中心服务端，通过SpringCloudConfig获取GitHub的服务地址
-
+    stream:
+      bindings: 
+        myMessage:
+          group: order  #消息分组
+          content-type: application/json
+  redis:
+    host: 10.126.2.179
+  # host: 192.168.1.7
+    port: 6379
   rabbitmq:
-  #    host: 10.126.2.179
-      host: 192.168.1.7
+      host: 10.126.2.179
+#      host: 192.168.1.7
       port: 5672
       username: guest
       password: guest
