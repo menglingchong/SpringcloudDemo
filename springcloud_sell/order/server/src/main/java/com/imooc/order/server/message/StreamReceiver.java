@@ -21,7 +21,7 @@ public class StreamReceiver {
     // }
 
     @StreamListener(value = StreamClient.OUTPUT)
-    @SendTo(StreamClient.INPUT2)
+    @SendTo(StreamClient.INPUT2) //消息反馈，用来指定返回内容的输出通道
     public String process(OrderDTO message) {
         log.info("StreamReceiver: {}", message);
         return "Received Message And Send Message To Process2";        
