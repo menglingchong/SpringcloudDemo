@@ -17,7 +17,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * @date ：Created in 2020/1/2 14:26
  */
 
-//Pre Filter
+//Pre Filter  前置过滤器
 @Component
 public class TokenFilter extends ZuulFilter {
     @Override

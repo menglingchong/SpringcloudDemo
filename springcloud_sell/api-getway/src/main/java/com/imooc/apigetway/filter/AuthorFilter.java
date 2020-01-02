@@ -12,11 +12,11 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
 
 /**
+ * 鉴权（区分买家和卖家）
  * @author ：menglc
  * @date ：Created in 2020/1/2 14:26
  */
 
-//鉴权和添加用户过滤器
 @Component
 public class AuthorFilter extends ZuulFilter {
     @Override
