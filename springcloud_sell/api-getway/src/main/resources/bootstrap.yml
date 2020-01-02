@@ -1,10 +1,10 @@
 spring:
   cloud:
     config:
-      name: springcloudgetway-config-client  #
-      profile: dev   #
-      label: master
-      uri: http://localhost:8004  #
+      name: springcloudgetway-config-client  # 访问统一配置中心中的配置文件的名称
+      profile: dev   # 访问环境的设置
+      label: master  #访问的分支设置
+      uri: http://localhost:8004  # 本微服务启动后先去找8004号服务 即统一配置中心服务，通过SpringCloudConfig获取GitHub的服务地址
 
 eureka:
   client:
