@@ -17,5 +17,5 @@ public class UserInfo {
     private String username;
     private String password;
     private String openid;
-    private String role;
+    private Integer role;
 }
