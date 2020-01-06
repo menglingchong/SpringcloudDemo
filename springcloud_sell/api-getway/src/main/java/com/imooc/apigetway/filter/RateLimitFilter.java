@@ -12,7 +12,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * @author ：menglc
  * @date ：Created in 2020/1/2 16:09
  */
-//限流  使用令牌桶算法
+//限流拦截器  使用令牌桶算法
 public class RateLimitFilter extends ZuulFilter {
     private static final RateLimiter RATE_LIMITER = RateLimiter.create(100);
     @Override

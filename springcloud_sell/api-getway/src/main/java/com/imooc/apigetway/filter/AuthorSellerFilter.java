@@ -24,7 +24,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  */
 
 @Component
-public class AuthorFilter extends ZuulFilter {
+public class AuthorSellerFilter extends ZuulFilter {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
@@ -40,7 +40,12 @@ public class AuthorFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        return true;
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = requestContext.getRequest();
+        if ("/springcloud-order2/order/finish".equals(request.getRequestURI())) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -48,27 +53,14 @@ public class AuthorFilter extends ZuulFilter {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
 
-        //  /order/create  只能买家访问(cookie中有openid)
         //  /order/finish  只能卖家访问(cookie中有token,并且对应的redis中的值)
-        //  /product/list  都可以访问
-
-        if ("/springcloud-order2/order/create".equals(request.getRequestURI())) {
-            Cookie cookie = CookieUtil.get(request, "openid");
-            if (cookie == null || StringUtils.isEmpty(cookie.getValue())) {
-                requestContext.setSendZuulResponse(false);
-                requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value()); //权限不足
-            }
-        }
-
-        if ("/springcloud-order2/order/finish".equals(request.getRequestURI())) {
-            Cookie cookie = CookieUtil.get(request, "token");
-            String redisValue = stringRedisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_TEMPLATE, cookie.getValue()));
-            if (cookie == null
-                    || StringUtils.isEmpty(cookie.getValue())
-                    || StringUtils.isEmpty(redisValue)) {
-                requestContext.setSendZuulResponse(false);
-                requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value()); //权限不足
-            }
+        Cookie cookie = CookieUtil.get(request, "token");
+        String redisValue = stringRedisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_TEMPLATE, cookie.getValue()));
+        if (cookie == null
+                || StringUtils.isEmpty(cookie.getValue())
+                || StringUtils.isEmpty(redisValue)) {
+            requestContext.setSendZuulResponse(false);
+            requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value()); //权限不足
         }
         return null;
     }

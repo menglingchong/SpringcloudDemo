@@ -5,6 +5,10 @@ spring:
       profile: dev   # 访问环境的设置
       label: master  #访问的分支设置
       uri: http://localhost:8004  # 本微服务启动后先去找8004号服务 即统一配置中心服务，通过SpringCloudConfig获取GitHub的服务地址
+  redis:
+#    host: 10.126.2.179
+    host: 192.168.1.5
+    port: 6379
 
 eureka:
   client:
@@ -17,10 +21,10 @@ zuul:
   #全部服务忽略敏感头(全部服务都可以传递cookie)
   sensitive-headers:
   routes:  # 自定义路由规则 /myProduct/product/list -> /springcloud-product/product/list
-    myProduct:  
+    myProduct:
       path: /myProduct/**
       serviceId: springcloud-product
       sensitiveHeaders:  # 将该服务忽略敏感头
   ignored-patterns:  # 排除某些路由
     - /**/product/listForOrder
-  ignored-services: "*" #禁用默认的路由，仅使用我们自定义的路由
+#  ignored-services: "*" #禁用默认的路由，仅使用我们自定义的路由
