@@ -1,25 +1,33 @@
 package com.imooc.apigetway.filter;
 
+import com.imooc.apigetway.constant.RedisConstant;
+import com.imooc.apigetway.utils.CookieUtil;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.exception.ZuulException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_DECORATION_FILTER_ORDER;
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
 
 /**
+ * 鉴权（区分买家和卖家）
+ *
  * @author ：menglc
  * @date ：Created in 2020/1/2 14:26
  */
 
-//Pre Filter  前置过滤器
 @Component
-public class TokenFilter extends ZuulFilter {
+public class AuthorBuyerFilter extends ZuulFilter {
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
     @Override
     public String filterType() {
         return PRE_TYPE;
@@ -32,7 +40,12 @@ public class TokenFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        return true;
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = requestContext.getRequest();
+        if ("/springcloud-order2/order/create".equals(request.getRequestURI())) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -40,13 +53,13 @@ public class TokenFilter extends ZuulFilter {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
 
-        //这里从url参数里获取, 也可以从cookie, header里获取
-        String token = request.getParameter("token");
-        if (StringUtils.isEmpty(token)) {
-            // requestContext.setSendZuulResponse(false);
-            //设置权限不足的状态码
-            // requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+        //  /order/create  只能买家访问(cookie中有openid)
+        Cookie cookie = CookieUtil.get(request, "openid");
+        if (cookie == null || StringUtils.isEmpty(cookie.getValue())) {
+            requestContext.setSendZuulResponse(false);
+            requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value()); //权限不足
         }
+
         return null;
     }
 }
