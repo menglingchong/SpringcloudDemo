@@ -22,3 +22,16 @@ spring:
 #    host: 10.126.2.179
     host: 192.168.1.5
     port: 6379
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
