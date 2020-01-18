@@ -28,3 +28,12 @@ zuul:
   ignored-patterns:  # 排除某些路由
     - /**/product/listForOrder
 #  ignored-services: "*" #禁用默认的路由，仅使用我们自定义的路由
+
+  host:
+    connect-timeout-millis: 15000  #http连接超时大于Hystrix的超时时间
+    socket-timeout-millis: 60000  #socket超时
+
+#设置ribbon的超时时间小于zuul的超时时间
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
