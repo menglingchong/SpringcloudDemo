@@ -12,26 +12,32 @@ spring:
   main:
     allow-bean-definition-overriding: true
   rabbitmq:
-    host: 10.126.2.179
-#    host: 192.168.1.5
+#    host: 10.126.2.179
+    host: 192.168.1.5
     port: 5672
     username: guest
     password: guest
     virtual-host: /
   redis:
-    host: 10.126.2.179
-#    host: 192.168.1.5
+#    host: 10.126.2.179
+    host: 192.168.1.5
     port: 6379
 
+#配置的响应超时时间
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 6000
+            timeoutInMilliseconds: 8000
     getProductInfoList:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 1000
+            timeoutInMilliseconds: 6000
+
+feign:
+  hystrix:
+    enabled: true
+

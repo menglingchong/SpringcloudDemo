@@ -8,6 +8,8 @@ import com.imooc.order.server.form.OrderForm;
 import com.imooc.order.server.service.OrderService;
 import com.imooc.order.server.utils.ResultVOUtil;
 import com.imooc.order.server.vo.ResultVO;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
