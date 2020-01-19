@@ -12,16 +12,25 @@ spring:
   main:
     allow-bean-definition-overriding: true
   rabbitmq:
-#    host: 10.126.2.179
-    host: 192.168.1.5
+    host: 10.126.2.179
+#    host: 192.168.1.5
     port: 5672
     username: guest
     password: guest
     virtual-host: /
   redis:
-#    host: 10.126.2.179
-    host: 192.168.1.5
+    host: 10.126.2.179
+#    host: 192.168.1.5
     port: 6379
+  zipkin:
+    base-url: http://10.126.2.179:9411/
+    sender:
+      type: web
+    
+  #设置抽样的百分比
+  sleuth:
+    sampler:
+      probability: 1
 
 #配置的响应超时时间
 hystrix:
@@ -40,4 +49,8 @@ hystrix:
 feign:
   hystrix:
     enabled: true
-
+    
+logging:
+  level:
+    org.springframework.cloud.openfeign: debug
+    

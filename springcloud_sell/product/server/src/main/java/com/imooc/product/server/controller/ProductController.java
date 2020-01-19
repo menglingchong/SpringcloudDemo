@@ -83,11 +83,11 @@ public class ProductController {
     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
 
         //增加方法调用延时时间，超出Hystrix默认的时间会出现服务熔断
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // try {
+        //     Thread.sleep(5000);
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
         return productService.findList(productIdList);
     }
     

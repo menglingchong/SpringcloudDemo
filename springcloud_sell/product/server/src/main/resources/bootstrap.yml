@@ -9,9 +9,24 @@ spring:
     allow-bean-definition-overriding: true
 
   rabbitmq:
-#    host: 10.126.2.179
-    host: 192.168.1.7
+    host: 10.126.2.179
+#    host: 192.168.1.7
     port: 5672
     username: guest
     password: guest
     virtual-host: /
+
+
+  zipkin:
+    base-url: http://10.126.2.179:9411/
+    sender:
+      type: web
+      
+  #设置抽样的百分比
+  sleuth:
+    sampler:
+      probability: 1
+      
+logging:
+  level:
+    org.springframework.cloud.openfeign: debug
