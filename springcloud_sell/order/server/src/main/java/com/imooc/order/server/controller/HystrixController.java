@@ -32,7 +32,7 @@ public class HystrixController {
     //         @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),	//错误率
     // })
 
-
+    //配置服务熔断注解@HystrixCommand
     /*@HystrixCommand(fallbackMethod = "fallback")*/
     @HystrixCommand
     @GetMapping("/getProductInfoList")

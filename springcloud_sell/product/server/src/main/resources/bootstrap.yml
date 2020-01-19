@@ -15,3 +15,17 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+
+  zipkin:
+    base-url: http://10.126.2.179:9411/
+    sender:
+      type: web
+      
+  #设置抽样的百分比
+  sleuth:
+    sampler:
+      probability: 1
+      
+logging:
+  level:
+    org.springframework.cloud.openfeign: debug

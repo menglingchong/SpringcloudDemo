@@ -98,6 +98,13 @@
 			<groupId>com.imooc</groupId>
 			<artifactId>product-common</artifactId>
 		</dependency>
+		<!-- 包含sleuth和zipkin -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+        
+        
 	</dependencies>
 
 	<build>
